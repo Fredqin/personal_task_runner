@@ -2,7 +2,7 @@
 
 import { App, IonicApp, Platform } from 'ionic-framework/ionic';
 import { ClickerList } from './pages/clickerList/clickerList';
-import { Page2 } from './pages/page2/page2';
+import { TaskRunnerList } from './pages/task-runner-list/task-runner-list';
 import {Type} from 'angular2/core';
 
 @App({
@@ -21,13 +21,13 @@ export class ClickerApp {
     this.app = app;
     this.platform = platform;
 
-    this.rootPage = ClickerList;
+    this.rootPage = TaskRunnerList;
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
       { title: 'Clickers', component: ClickerList },
-      { title: 'Goodbye Ionic', component: Page2 },
+      { title: 'Task Runner', component: TaskRunnerList },
     ];
   }
 

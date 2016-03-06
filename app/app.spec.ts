@@ -29,7 +29,7 @@ export function main(): void {
       clickerApp = new ClickerApp(ionicApp, platform);
     });
 
-    it('initialises with two possible pages', () => {
+    it('initialises with the main pages', () => {
       expect(clickerApp['pages'].length).toEqual(2);
     });
 
