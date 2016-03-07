@@ -1,9 +1,11 @@
 'use strict';
 
 import {Page, NavController} from 'ionic-framework/ionic';
+import {TaskRunnerForm} from '../../components/taskRunnerForm/taskRunnerForm';
 
 @Page({
     templateUrl: 'build/pages/task-runner-list/task-runner-list.html',
+    directives: [TaskRunnerForm],
 })
 
 export class TaskRunnerList {

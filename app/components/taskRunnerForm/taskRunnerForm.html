@@ -1,12 +1,14 @@
-<form [ngFormModel]="form" (submit)="newClicker(form.value)">
-  <ion-row>
-    <ion-col width-80>
-      <ion-item>
-        <ion-input block [ngFormControl]="clickerNameInput" type="text" placeholder="New Clicker"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <button type="submit" block secondary outline><ion-icon name="add-circle"></ion-icon></button>
-    </ion-col>
-  </ion-row>
+<form [ngFormModel]="form" (submit)="newTask(form.value)">
+    <ion-row>
+        <ion-col width-20>
+            <button type="submit" secondary outline>
+                <ion-icon name="ios-checkmark-outline"></ion-icon>
+            </button>
+        </ion-col>
+        <ion-col width-70>
+            <ion-item>
+                <ion-input block [ngFormControl]="taskNameInput" type="text" placeholder="New Task"></ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row>
 </form>
