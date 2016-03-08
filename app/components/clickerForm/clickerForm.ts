@@ -2,9 +2,9 @@
 
 import { Component, View } from 'angular2/core';
 import { AbstractControl, ControlGroup, FormBuilder, Validators } from 'angular2/common';
-import { Clickers } from '../../services/clickers';
 import { Button, Icon, Item, Label, TextInput } from 'ionic-framework/ionic';
 import { Utils } from '../../services/utils';
+import { Clickers } from '../../services/clickers';
 
 @Component({
   selector: 'clicker-form',
