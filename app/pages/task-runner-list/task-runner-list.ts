@@ -14,7 +14,7 @@ export class TaskRunnerList {
     private taskService: Tasks;
     private nav: NavController;
     private title: string;
-    
+
     constructor(nav: NavController, taskService: Tasks) {
         this.taskService = taskService;
         this.nav = nav;

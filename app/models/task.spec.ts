@@ -10,7 +10,7 @@ export function main(): void {
         it('initialises with the correct name and seconds', () => {
             let task: Task = new Task('12434', 'test task', 300);
             expect(task.getName()).toEqual('test task');
-            expect(task.getSeconds()).toEqual(300);
+            expect(task.getTimer()).toEqual(300);
         });
     });
 

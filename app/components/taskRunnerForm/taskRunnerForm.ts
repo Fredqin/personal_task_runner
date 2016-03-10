@@ -23,7 +23,7 @@ export class TaskRunnerForm {
 
     constructor(taskService: Tasks, fb: FormBuilder) {
         this.taskService = taskService;
-        
+
         this.form = fb.group({
             taskNameInput: ['', Validators.required],
         });
@@ -39,7 +39,7 @@ export class TaskRunnerForm {
         if (!this.taskNameInput.valid) {
             return false;
         }
-        
+
         // pass new task to the task service
         this.taskService.newTask(formValue['taskNameInput']);
 

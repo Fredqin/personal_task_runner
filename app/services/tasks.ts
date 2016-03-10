@@ -4,7 +4,6 @@ import { Task } from '../models/task';
 import { Injectable } from 'angular2/core';
 import { SqlStorage } from 'ionic-framework/ionic';
 
-
 @Injectable()
 export class Tasks {
     private tasks: Array<Task>;
@@ -18,7 +17,7 @@ export class Tasks {
         this.initIds()
             .then((ids: Array<string>) => { this.ids = ids; })
             .then(() => this.initTasks(this.ids))
-            .then((Tasks: Array<Task>) => { this.tasks = Tasks; });
+            .then((taskList: Array<Task>) => { this.tasks = taskList; });
     }
 
     // initialise Ids from SQL storage
@@ -74,7 +73,6 @@ export class Tasks {
         const id: string = this.uid();
         // by default time is set to 300
         const task: Task = new Task(id, name, 300);
-           
         // add the task to the service
         this.tasks.push(task);
         // add the id to the service (need to keep a separate reference of IDs so we can cold load clickers)

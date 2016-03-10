@@ -3,16 +3,16 @@ import { TaskRunnerList } from './task-runner-list';
 let taskRunnerList: TaskRunnerList = null;
 
 export function main(): void {
-  'use strict';
+    'use strict';
 
-  describe('TaskRunnerList', () => {
+    describe('TaskRunnerList', () => {
 
-    beforeEach(() => {
-      taskRunnerList = new TaskRunnerList(null);
+        beforeEach(() => {
+            taskRunnerList = new TaskRunnerList(null, null);
+        });
+
+        it('initialises', () => {
+            expect(taskRunnerList).not.toBeNull();
+        });
     });
-
-    it('initialises', () => {
-      expect(taskRunnerList).not.toBeNull();
-    });
-  });
 }
