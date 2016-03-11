@@ -5,20 +5,24 @@ export class Task {
 
     private id: string;
     private name: string;
-    private seconds: number;
+    private timer: number;
 
-    constructor(id: string, name: string, seconds: number) {
+    constructor(id: string, name: string, timer: number) {
         this.id = id;
         this.name = name;
-        this.seconds = seconds;
+        this.timer = timer;
+    }
+
+    public getId(): string {
+        return this.id;
     }
 
     public getName(): string {
         return this.name;
     }
 
-    public getSeconds(): number {
-        return this.seconds;
+    public getTimer(): number {
+        return this.timer;
     }
 
 }
