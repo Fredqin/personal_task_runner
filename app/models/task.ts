@@ -13,6 +13,10 @@ export class Task {
         this.timer = timer;
     }
 
+    public getId(): string {
+        return this.id;
+    }
+
     public getName(): string {
         return this.name;
     }
