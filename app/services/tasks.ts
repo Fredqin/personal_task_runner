@@ -89,4 +89,21 @@ export class Tasks {
         return this.tasks;
     }
 
+    public removeTask(id: string): void {
+        // remove clicker from the service
+        this.tasks = this.tasks.filter((clicker: Task) => { return clicker.getId() !== id; });
+
+        // remove from ids array
+        this.ids = this.ids.filter((filterId: string) => { return filterId !== id; });
+
+        // null id in db
+        this.storage.remove(id);
+
+        // update service's ids array
+        this.storage.set('ids', JSON.stringify(this.ids));
+    }
+
+    public getTask(id: string): Task {
+        return this.tasks.find((task: Task) => { return task.getId() === id; });
+    }
 }

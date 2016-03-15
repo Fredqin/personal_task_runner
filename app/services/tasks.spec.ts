@@ -39,9 +39,18 @@ function storageSetStub(key: string, value: string): Promise<{}> {
     });
 }
 
+function storageRemoveStub(key: string): Promise<{}> {
+    'use strict';
+
+    return new Promise((resolve: Function) => {
+    resolve(true);
+  });
+}
+
 let mockSqlStorage: Object = {
     get: storageGetStub,
     set: storageSetStub,
+    remove: storageRemoveStub,
 };
 
 export function main(): void {
@@ -111,8 +120,16 @@ export function main(): void {
             expect(tasks.getTasks()[0].getName()).toEqual('test');
         });
 
-        // it('returns undefined for a bad id', () => {
-        //     expect(clickers.getClicker('dave')).not.toBeDefined();
-        // });
+        it('returns undefined for a bad id', () => {
+            expect(tasks.getTask('no_existed')).not.toBeDefined();
+        });
+
+        it('should remove task if id provided', () => {
+            let idToRemove: string = tasks.newTask('newTask');
+            tasks.removeTask(idToRemove);
+            expect(tasks['storage'].set).toHaveBeenCalledWith(idToRemove, jasmine.any(String));
+            expect(tasks.getTasks()).toEqual([]);
+        });
+
     });
 };
