@@ -89,7 +89,7 @@ export class Tasks {
         return this.tasks;
     }
 
-    public removeTask(id: string): void {
+    public removeTask(id: string): boolean {
         // remove clicker from the service
         this.tasks = this.tasks.filter((clicker: Task) => { return clicker.getId() !== id; });
 
@@ -101,6 +101,8 @@ export class Tasks {
 
         // update service's ids array
         this.storage.set('ids', JSON.stringify(this.ids));
+
+        return true;
     }
 
     public getTask(id: string): Task {

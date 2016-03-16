@@ -6,6 +6,7 @@ import { Button, Icon } from 'ionic-framework/ionic';
 
 @Component({
     selector: 'task-delete-button',
+    inputs: ['task: task'],
 })
 
 @View({
@@ -19,5 +20,9 @@ export class TaskDeleteButton {
 
     constructor(taskService: Tasks) {
         this.taskService = taskService;
+    }
+
+    public removeTask(id: string): void {
+        this.taskService.removeTask(id);
     }
 }
