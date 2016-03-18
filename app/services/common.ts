@@ -2,7 +2,7 @@
 
 export class Common {
 
-    public convertSSToHHMMSS(sec: number): string {
+    public static convertSSToHHMMSS(sec: number): string {
         if (sec === 0) {
             return 'No Time Set';
         }

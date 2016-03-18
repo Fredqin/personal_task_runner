@@ -1,12 +1,15 @@
 'use strict';
 
-import { Component, View } from 'angular2/core';
+import { Component, View, Input } from 'angular2/core';
 import { Tasks } from '../../services/tasks';
+import { Task } from '../../models/task';
 import { Button, Icon } from 'ionic-framework/ionic';
+import { Common } from '../../services/common';
 
 @Component({
     selector: 'task-timer',
-    inputs: ['task: task'],
+    // inputs: ['task: task'],
+    // providers: [ Common ]
 })
 
 @View({
@@ -15,11 +18,17 @@ import { Button, Icon } from 'ionic-framework/ionic';
 })
 
 export class TaskTimer {
+    @Input() task: Task;
 
     private taskService: Tasks;
-
+    private timeDisplay: string;
+    
     constructor(taskService: Tasks) {
         this.taskService = taskService;
     }
 
+    // ask init
+    ngOnInit() {
+        console.log(this.task.getTimer());
+    }
 }
