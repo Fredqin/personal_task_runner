@@ -29,6 +29,7 @@ export class TaskTimer {
 
     // ask init
     ngOnInit() {
-        console.log(this.task.getTimer());
+        this.timeDisplay = Common.convertSSToHHMMSS(this.task.getTimer());
+        console.log(this.timeDisplay);
     }
 }
