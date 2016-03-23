@@ -5,7 +5,7 @@ export function main(): void {
 
     describe('timer', () => {
 
-        it('initialises with the correct hour, minute and second', () => {
+        it('override initialises the correct hour, minute and second', () => {
             let timer: Timer = new Timer(1, 20, 30);
             expect(timer.getHour()).toEqual(1);
             expect(timer.getMinute()).toEqual(20);
@@ -18,6 +18,13 @@ export function main(): void {
             timer.setSecond(90);
             expect(timer.getMinute()).toEqual(59);
             expect(timer.getSecond()).toEqual(59);
+        });
+
+        it('should define as 5 minutes if constructor does not have parameter', () => {
+            let timer: Timer = new Timer();
+            expect(timer.getHour()).toEqual(0);
+            expect(timer.getMinute()).toEqual(5);
+            expect(timer.getSecond()).toEqual(0);
         });
     });
 

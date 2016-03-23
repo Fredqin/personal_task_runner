@@ -17,15 +17,8 @@ import { Button, Icon } from 'ionic-framework/ionic';
 
 export class TaskTimer {
     private taskService: Tasks;
-    // private timeDisplay: string;
 
     constructor(taskService: Tasks) {
         this.taskService = taskService;
     }
-
-    // ask init
-    // public ngOnInit(): void {
-    //     this.timeDisplay = Common.convertSSToHHMMSS(this.task.getTimer());
-    //     console.log(this.timeDisplay);
-    // }
 }

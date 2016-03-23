@@ -1,6 +1,7 @@
 'use strict';
 
 import { Task } from '../models/task';
+import { Timer } from '../models/timer';
 import { Injectable } from 'angular2/core';
 import { SqlStorage } from 'ionic-framework/ionic';
 
@@ -71,8 +72,9 @@ export class Tasks {
 
     public newTask(name: string): string {
         const id: string = this.uid();
-        // by default time is set to 300
-        const task: Task = new Task(id, name, 300);
+        // by default set timer
+        let timer: Timer = new Timer();
+        const task: Task = new Task(id, name, timer);
         // add the task to the service
         this.tasks.push(task);
         // add the id to the service (need to keep a separate reference of IDs so we can cold load clickers)

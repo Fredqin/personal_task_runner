@@ -8,9 +8,9 @@ export class Timer {
     private second: number;
 
     constructor(hour?: number, minute?: number, second?: number) {
-        this.hour = hour;
-        this.minute = minute;
-        this.second = second;
+        this.hour = hour || 0;
+        this.minute = minute || 5;
+        this.second = second || 0;
     }
 
     public getHour(): number {

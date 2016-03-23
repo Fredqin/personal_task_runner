@@ -1,13 +1,15 @@
 'use strict';
 
+import { Timer } from './timer';
+
 // Represents a single task
 export class Task {
 
     private id: string;
     private name: string;
-    private timer: number;
+    private timer: Timer;
 
-    constructor(id: string, name: string, timer: number) {
+    constructor(id: string, name: string, timer: Timer) {
         this.id = id;
         this.name = name;
         this.timer = timer;
@@ -21,7 +23,7 @@ export class Task {
         return this.name;
     }
 
-    public getTimer(): number {
+    public getTimer(): Timer {
         return this.timer;
     }
 
