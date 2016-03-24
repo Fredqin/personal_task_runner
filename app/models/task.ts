@@ -27,4 +27,8 @@ export class Task {
         return this.timer;
     }
 
+    public setTimer(timer: Timer): void {
+        this.timer = timer;
+    }
+
 }

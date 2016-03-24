@@ -51,10 +51,11 @@ export class Tasks {
 
     // initialise a task from a raw JSON string out of the DB
     private initTask(task: string): Task {
-        const parsedClicker: Object = JSON.parse(task);
-        const newTask: Task = new Task(parsedClicker['id'], parsedClicker['name'], parsedClicker['timer']);
+        const parsedTask: Object = JSON.parse(task);
+        const parsedTimer: Timer = parsedTask['timer'];
+        const newTask: Task = new Task(parsedTask['id'], parsedTask['name'], parsedTimer);
 
-        // add the task - need to re-instantiate object
+        // add the timer - need to re-instantiate object
         // for (let click of parsedClicker['clicks']) {
         //     newClicker.addClick(new Click(click.time, click.location));
         // }

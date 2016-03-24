@@ -14,13 +14,13 @@ function storageGetStub(key: string): Promise<string> {
             rtn = JSON.stringify(TASKS_ID);
             break;
         case TASKS_ID[0]:
-            rtn = '{"id":"' + TASKS_ID[0] + '","name":"test1","timer": 300 }';
+            rtn = '{"id":"' + TASKS_ID[0] + '","name":"test1","timer": {"hour" : 0, "minute": 5, "second": 0} }';
             break;
         case TASKS_ID[1]:
-            rtn = '{"id":"' + TASKS_ID[1] + '","name":"test2","timer": 300 }';
+            rtn = '{"id":"' + TASKS_ID[1] + '","name":"test2","timer": {"hour" : 0, "minute": 5, "second": 0} }';
             break;
         case TASKS_ID[2]:
-            rtn = '{"id":"' + TASKS_ID[2] + '", "name":"test3", "timer": 300 } ';
+            rtn = '{"id":"' + TASKS_ID[2] + '", "name":"test3", "timer": {"hour" : 0, "minute": 5, "second": 0} } ';
             break;
         default:
             rtn = 'SHOULD NOT BE HERE!';
@@ -43,8 +43,8 @@ function storageRemoveStub(key: string): Promise<{}> {
     'use strict';
 
     return new Promise((resolve: Function) => {
-    resolve(true);
-  });
+        resolve(true);
+    });
 }
 
 let mockSqlStorage: Object = {
@@ -108,10 +108,13 @@ export function main(): void {
         });
 
         it('can initialise a task from string', () => {
-            let taskString: string = '{"id":"0g2vt8qtlm","name":"harold","timer":300 }';
+            let taskString: string = '{"id":"0g2vt8qtlm","name":"harold","timer":{"hour" : 0, "minute": 5, "second": 0} }';
             let task: Task = (<any>tasks).initTask(taskString);
+
+            expect(task.getId()).toEqual('0g2vt8qtlm');
             expect(task.getName()).toEqual('harold');
-            expect(task.getTimer()).toEqual(300);
+            // defaut time set to 5 minutes
+            // expect(timer.getMinute()).toEqual(5);
         });
 
         it('should add new task with the correct name', () => {
