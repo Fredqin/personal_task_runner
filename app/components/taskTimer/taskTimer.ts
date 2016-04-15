@@ -7,7 +7,6 @@ import { Button, Icon, TextInput, Alert, NavController} from 'ionic-framework/io
 @Component({
     selector: 'task-timer',
     inputs: ['task: task'],
-    // providers: [ Common ]
 })
 
 @View({
@@ -22,22 +21,25 @@ export class TaskTimer {
         this.taskService = taskService;
     }
 
-    setTimer() {
+    openTimerSetDialog() {
         let prompt = Alert.create({
             title: 'Set timer',
             message: "Enter hours, minutes and seconds",
             inputs: [
                 {
                     name: 'hours',
-                    placeholder: 'hours'
+                    placeholder: 'hours',
+                    type: "number",
                 }, 
                 {
                     name: 'minutes',
-                    placeholder: 'minutes'
+                    placeholder: 'minutes',
+                    type: "number",
                 },
                 {
-                    name: 'minutes',
-                    placeholder: 'seconds'
+                    name: 'seconds',
+                    placeholder: 'seconds',
+                    type: "number",
                 },
             ],
             buttons: [
@@ -50,6 +52,7 @@ export class TaskTimer {
                 {
                     text: 'Save',
                     handler: data => {
+                        console.log(data)
                         console.log('Saved clicked');
                     }
                 }
