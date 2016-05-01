@@ -111,4 +111,16 @@ export class Tasks {
     public getTask(id: string): Task {
         return this.tasks.find((task: Task) => { return task.getId() === id; });
     }
+    
+    public updateTaskTimer(id:string, timeInputObject: Object) {
+        // get task
+        var task: Task = this.getTask(id);
+        var timer: Timer = task.getTimer();
+        
+        // get new hours
+        var newHours: number = timeInputObject["hours"];
+        
+        // update the task timer to time input object
+        
+    }
 }

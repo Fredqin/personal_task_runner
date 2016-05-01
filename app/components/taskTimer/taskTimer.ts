@@ -1,7 +1,8 @@
 'use strict';
 
-import { Component, View } from 'angular2/core';
+import { Component, View, Input } from 'angular2/core';
 import { Tasks } from '../../services/tasks';
+import { Task } from '../../models/task';
 import { Button, Icon, TextInput, Alert, NavController} from 'ionic-framework/ionic';
 
 @Component({
@@ -15,6 +16,8 @@ import { Button, Icon, TextInput, Alert, NavController} from 'ionic-framework/io
 })
 
 export class TaskTimer {
+    @Input() task:Task;
+    
     private taskService: Tasks;
 
     constructor(taskService: Tasks, public nav: NavController) {
@@ -30,7 +33,7 @@ export class TaskTimer {
                     name: 'hours',
                     placeholder: 'hours',
                     type: "number",
-                }, 
+                },
                 {
                     name: 'minutes',
                     placeholder: 'minutes',
@@ -52,7 +55,10 @@ export class TaskTimer {
                 {
                     text: 'Save',
                     handler: data => {
-                        console.log(data)
+                        this.formatInputTimeData(data);
+                        var taskId = this.task.getId();
+                        this.taskService.updateTaskTimer(taskId, data);
+                        
                         console.log('Saved clicked');
                     }
                 }
@@ -61,9 +67,27 @@ export class TaskTimer {
 
         // create prompt to input hour, minute and seconds
         this.nav.present(prompt);
+    }
 
-        // input should be limited to 2 digits
-        console.log(prompt)
+    formatInputTimeData(timeData: Object) {
+        var hours: string = timeData["hours"];
+        var minutes: string = timeData["minutes"];
+        var seconds: string = timeData["seconds"];
 
+        timeData["hours"] = this.formatStringToInt(hours);
+        timeData["minutes"] = this.formatStringToInt(minutes);
+        timeData["seconds"] = this.formatStringToInt(seconds);
+    }
+
+    formatStringToInt(str: string): number {
+        var intVal: number;
+
+        if (str.length !== 0) {
+            intVal = parseInt(str);
+        } else {
+            intVal = 0;
+        }
+        
+        return intVal;
     }
 }
