@@ -80,7 +80,7 @@ export class Tasks {
         this.tasks.push(task);
         // add the id to the service (need to keep a separate reference of IDs so we can cold load clickers)
         this.ids.push(id);
-        // save the clicker by id
+        // save the task by id
         this.storage.set(id, JSON.stringify(task));
         // save the service's ids array
         this.storage.set('ids', JSON.stringify(this.ids));
@@ -111,16 +111,27 @@ export class Tasks {
     public getTask(id: string): Task {
         return this.tasks.find((task: Task) => { return task.getId() === id; });
     }
-    
-    public updateTaskTimer(id:string, timeInputObject: Object) {
+
+    public updateTaskTimer(id: string, timeInputObject: Object) {
         // get task
-        var task: Task = this.getTask(id);
-        var timer: Timer = task.getTimer();
-        
-        // get new hours
+        let task: Task = this.getTask(id);
+
+        // get new hours, minutes, seconds
         var newHours: number = timeInputObject["hours"];
-        
+        var newMinutes: number = timeInputObject["minutes"];
+        var newSeconds: number = timeInputObject["seconds"];
+
+        // set new timer
+        let timer: Timer = new Timer();
+        timer.setHour(newHours);
+        timer.setMinute(newMinutes);
+        timer.setSecond(newSeconds);
+
+        // set timer
+        task.setTimer(timer);
+
         // update the task timer to time input object
-        
+        // save the task by id
+        this.storage.set(id, JSON.stringify(task));
     }
 }

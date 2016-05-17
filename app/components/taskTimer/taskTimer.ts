@@ -57,6 +57,7 @@ export class TaskTimer {
                     handler: data => {
                         this.formatInputTimeData(data);
                         var taskId = this.task.getId();
+                        
                         this.taskService.updateTaskTimer(taskId, data);
                         
                         console.log('Saved clicked');
